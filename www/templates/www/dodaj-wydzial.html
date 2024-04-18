@@ -1,0 +1,15 @@
+{% extends 'www/base.html' %}
+{% load static %}
+{% block title %}Dodaj Wydział
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'www/style.css' %}" />
+{% endblock %} {% block content %}
+<form class="form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {% for field in form %}
+    <div class="form-label">{{ field.label_tag }}</div>
+    {{ field }} {% endfor %}
+    <button class="btn btn-outline-primary mt-3" type="submit">Zapisz</button>
+</form>
+
+{% endblock %}

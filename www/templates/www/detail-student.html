@@ -1,0 +1,25 @@
+{% extends "www/base.html" %}
+{% block title %}Studenci{% endblock %}
+{% block content %}
+<div class="row justify-content-center g-0">
+    <div class="card" style="width: 18rem">
+        <img src="{{ student.zdjecie.url }}" width="100" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title text-center">
+                {{ student.imie }} {{ student.nazwisko }}
+            </h5>
+            <p class="card-text">
+                Studiuje na: {% for kierunek in student.kierunki.all %}
+                <a href="{% url 'detail-kierunek' pk=kierunek.id %}">
+                    <p>{{ kierunek.nazwa }}</p>
+                </a>
+                {% endfor %}
+            </p>
+        </div>
+        <div class="card-footer text-center">
+            <a class="btn" href="{% url 'studenci-lista' %}">Powrót</a>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

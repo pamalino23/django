@@ -1,0 +1,24 @@
+{% extends "www/base.html" %}
+
+{% block title %}Kierunki{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center g-0">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{ kierunek.nazwa }}</h5>
+            <p class="card-text">
+                Realizowany na:
+                {% for wydzial in kierunek.wydzialy.all %}
+                <a href="{% url 'detail-wydzial' pk=wydzial.id %}">
+                    <p>{{ wydzial.nazwa }}</p>
+                </a>
+                {% endfor %}
+            </p>
+        </div>
+        <div class="card-footer text-center">
+            <a class="btn" href="{% url 'kierunki-lista' %}">Powrót</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

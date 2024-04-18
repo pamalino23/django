@@ -1,0 +1,20 @@
+{% extends "www/base.html" %}
+
+{% load static %}
+
+{% block title %}Zestawienie studentów{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'www/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="studenci">
+    <h2>Studenci</h2>
+    {% for student in studenci %}
+    
+    <h5><a href="{% url 'detail-student' pk=student.pk %}">{{student.imie}} {{student.nazwisko}}, numer albumu: {{student.nr_albumu}}, email: {{ student.email }}</a></h5>
+    
+    {% endfor %}
+</div>
+{% endblock %}

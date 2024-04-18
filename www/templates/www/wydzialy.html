@@ -1,0 +1,19 @@
+{% extends "www/base.html" %}
+{% load static %}
+{% block title %}Zestawienie wydziałów{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'www/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="wydzialy">
+        <h2>Wydziały</h2>
+        {% for wydzial in wydzialy %}
+        
+        <h5><a href="{% url 'detail-wydzial' pk=wydzial.pk %}">{{wydzial.nazwa}}</a></h5>
+        
+        {% endfor %}
+    </div>
+
+{% endblock %}

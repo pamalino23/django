@@ -1,0 +1,20 @@
+{% extends "www/base.html" %}
+
+{% load static %}
+
+{% block title %}Zestawienie kierunków{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'www/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="kierunki">
+    <h2>Kierunki</h2>
+    {% for kierunek in kierunki %}
+    
+    <h5><a href="{% url 'detail-kierunek' pk=kierunek.pk %}">{{kierunek.nazwa}}</a></h5>
+    
+    {% endfor %}
+</div>
+{% endblock %}

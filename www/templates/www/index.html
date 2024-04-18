@@ -1,0 +1,39 @@
+{% extends "www/base.html" %}
+
+{% load static %}
+
+{% block title %}Zestawienie wydziałów, kierunków i studentów{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'www/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="wszystko">
+    <h2>Wydziały</h2>
+    {% for wydzial in wydzialy %}
+
+    <h5><a href="{% url 'detail-wydzial' pk=wydzial.pk %}">{{wydzial.nazwa}}</a></h5>
+
+    {% endfor %}
+    <hr>
+    <h2>Kierunki</h2>
+    {% for kierunek in kierunki %}
+
+    <h5><a href="{% url 'detail-kierunek' pk=kierunek.pk %}">{{kierunek.nazwa}}</a></h5>
+
+    {% endfor %}
+    <hr>
+    <h2>Studenci</h2>
+    {% for student in studenci %}
+
+    <h5><a href="{% url 'detail-student' pk=student.pk %}">{{student.imie}} {{student.nazwisko}}, numer albumu:
+            {{student.nr_albumu}}, email: {{ student.email }}</a></h5>
+
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+Footer
+{% endblock %}
